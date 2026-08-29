@@ -36,6 +36,25 @@ public class StudySessionController {
         return ResponseEntity.ok(session);
     }
 
+    @PutMapping("/sessions/{id}")
+    public ResponseEntity<StudySession> updateSession(
+            @RequestBody StudySession session,
+            @PathVariable String id) {
+
+        StudySession updatedSession = manager.updateSession(
+                id,
+                session.getSubject(),
+                session.getDuration(),
+                session.getStatus()
+        );
+
+        if (updatedSession == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(updatedSession);
+    }
+
 
 
 

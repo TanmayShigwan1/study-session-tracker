@@ -68,4 +68,19 @@ public class StudySessionManager {
     }
 
 
+    public StudySession updateSession(String id, String subject, int duration, String status){
+        StudySession session = findSession(id);
+        if (session == null) {
+            return null;
+        }
+
+        session.setSubject(subject);
+        session.setDuration(duration);
+        session.setStatus(status);
+
+        return  session;
+
+    }
+
+
 }
