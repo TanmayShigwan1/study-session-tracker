@@ -58,4 +58,14 @@ public class StudySessionManager {
         nextId++;
     }
 
+    public StudySession findSession(String find_id){
+        for(int i=0;i<sessions.size();i++){
+            if(find_id.equals(sessions.get(i).getId())){
+                //so like we will jus print that
+                return sessions.get(i);
+            }
+        }return null;
+    }
+
+
 }
