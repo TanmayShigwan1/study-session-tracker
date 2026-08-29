@@ -3,10 +3,12 @@ package com.tanmay.study_session_tracker;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class StudySessionManager {
 
     private List<StudySession> sessions;
-
+    int nextId=5;
     public StudySessionManager() {
 
         sessions = new ArrayList<>();
@@ -38,9 +40,21 @@ public class StudySessionManager {
                 30,
                 "TODO"
         ));
+
+
     }
 
     public List<StudySession> getSessions() {
         return sessions;
+    }
+
+    public  void addSession(String subject, int duration, String status){
+        sessions.add(new StudySession(
+                String.valueOf(nextId),
+                subject,
+                duration,
+                status
+                ));
+        nextId++;
     }
 }
