@@ -1,5 +1,6 @@
 package com.tanmay.study_session_tracker;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,10 +24,17 @@ public class StudySessionController {
             );
         }
 
-        @GetMapping("/sessions/{id}")
-             public StudySession getSession(@PathVariable String id){
-             return manager.findSession(id);
+    @GetMapping("/sessions/{id}")
+    public ResponseEntity<StudySession> getSession(@PathVariable String id) {
+
+        StudySession session = manager.findSession(id);
+
+        if (session == null) {
+            return ResponseEntity.notFound().build();
         }
+
+        return ResponseEntity.ok(session);
+    }
 
 
 
