@@ -70,6 +70,7 @@ public class StudySessionManager {
 
     public StudySession updateSession(String id, String subject, int duration, String status){
         StudySession session = findSession(id);
+
         if (session == null) {
             return null;
         }
@@ -79,6 +80,23 @@ public class StudySessionManager {
         session.setStatus(status);
 
         return  session;
+
+    }
+
+
+    public boolean  deleteSession(String id){
+        StudySession session=findSession(id);
+
+        if(session==null){
+            return false;
+        }
+
+        sessions.remove(session);
+        return true;
+
+
+
+
 
     }
 

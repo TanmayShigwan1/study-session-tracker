@@ -55,6 +55,19 @@ public class StudySessionController {
         return ResponseEntity.ok(updatedSession);
     }
 
+    @DeleteMapping("/sessions/{id}")
+    public ResponseEntity<Void> deleteSession(@PathVariable String id) {
+
+
+        boolean deleted = manager.deleteSession(id);
+
+        if (!deleted) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+
 
 
 
