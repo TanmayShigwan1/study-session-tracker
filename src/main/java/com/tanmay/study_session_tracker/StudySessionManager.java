@@ -104,4 +104,20 @@ public class StudySessionManager {
     }
 
 
+    public  StudySession getLongestSession(){
+
+       if(sessions.isEmpty()){
+           return  null;
+       }
+
+        StudySession largests=sessions.get(0);
+        for(int i=1;i<sessions.size();i++){
+            if(sessions.get(i).getDuration()>largests.getDuration()){
+                largests=sessions.get(i);
+            }
+
+        }return  largests;
+    }
+
+
 }

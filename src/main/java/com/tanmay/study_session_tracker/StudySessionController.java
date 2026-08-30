@@ -74,6 +74,11 @@ public class StudySessionController {
 
     }
 
+    @GetMapping("sessions/longest")
+    public StudySession longest(){
+             return manager.getLongestSession();
+    }
+
 
 
 
