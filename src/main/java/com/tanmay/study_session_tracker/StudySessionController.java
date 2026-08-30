@@ -78,6 +78,7 @@ public class StudySessionController {
     public StudySession longest(){
              return manager.getLongestSession();
     }
+    
 
 
 

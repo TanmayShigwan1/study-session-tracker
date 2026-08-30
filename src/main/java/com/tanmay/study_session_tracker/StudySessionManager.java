@@ -1,5 +1,6 @@
 package com.tanmay.study_session_tracker;
 
+import javax.security.auth.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,6 +118,18 @@ public class StudySessionManager {
             }
 
         }return  largests;
+    }
+
+
+    public   List<StudySession> filterSubjects(String subject){
+        List<StudySession> result = new ArrayList<>();
+
+        for(int i=0;i<sessions.size();i++){
+            if(sessions.get(i).getSubject().equals(subject)){
+                result.add(sessions.get(i));
+            }
+        }return  result;
+        
     }
 
 
