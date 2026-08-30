@@ -93,11 +93,14 @@ public class StudySessionManager {
 
         sessions.remove(session);
         return true;
+    }
 
 
-
-
-
+    public int  getTotalDuration(){
+        int total=0;
+        for(int i=0;i<sessions.size();i++){
+            total=sessions.get(i).getDuration()+total;
+        }return  total;
     }
 
 

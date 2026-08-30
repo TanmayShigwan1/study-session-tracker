@@ -68,6 +68,14 @@ public class StudySessionController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("sessions/total-duration")
+    public  int totalDur(){
+        return   manager.getTotalDuration();
+
+    }
+
+
+
 
 
 
