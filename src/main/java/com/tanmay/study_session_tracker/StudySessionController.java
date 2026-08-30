@@ -2,6 +2,7 @@ package com.tanmay.study_session_tracker;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +10,7 @@ import java.util.List;
 @RestController
 public class StudySessionController {
         StudySessionManager manager=new StudySessionManager();
-        @GetMapping("/sessions")
-        public List<StudySession> getSession(){
-           return  manager.getSessions();
-        }
+
 
 
         @PostMapping("/sessions")
@@ -78,7 +76,18 @@ public class StudySessionController {
     public StudySession longest(){
              return manager.getLongestSession();
     }
-    
+
+
+    @GetMapping("/sessions")
+    public List<StudySession> getSessions(
+            @RequestParam(required = false) String subject) {
+
+        if (subject != null) {
+            return manager.filterSubjects(subject);
+        }
+
+        return manager.getSessions();
+    }
 
 
 
