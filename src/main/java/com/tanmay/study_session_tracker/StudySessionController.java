@@ -80,10 +80,15 @@ public class StudySessionController {
 
     @GetMapping("/sessions")
     public List<StudySession> getSessions(
-            @RequestParam(required = false) String subject) {
+            @RequestParam(required = false) String subject,
+            @RequestParam(required = false) String status) {
 
         if (subject != null) {
             return manager.filterSubjects(subject);
+        }
+
+        if (status != null) {
+            return manager.filterByStatus(status);
         }
 
         return manager.getSessions();

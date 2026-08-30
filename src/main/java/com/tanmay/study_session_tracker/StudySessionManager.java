@@ -129,7 +129,20 @@ public class StudySessionManager {
                 result.add(sessions.get(i));
             }
         }return  result;
-        
+
+    }
+
+    public List<StudySession> filterByStatus(String status) {
+
+        List<StudySession> result = new ArrayList<>();
+
+        for (int i = 0; i < sessions.size(); i++) {
+            if (sessions.get(i).getStatus().equals(status)) {
+                result.add(sessions.get(i));
+            }
+        }
+
+        return result;
     }
 
 
