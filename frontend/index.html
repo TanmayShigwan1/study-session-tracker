@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Study Session Tracker</title>
 
     <link rel="stylesheet" href="style.css">
@@ -10,12 +11,180 @@
 
 <body>
 
-<h1>Study Session Tracker</h1>
+<div class="container">
 
-<div id="sessions-container">
-    <!-- Sessions will appear here -->
+    <header>
+        <div>
+            <h1>Study Session Tracker</h1>
+            <p>Track your study sessions and progress.</p>
+        </div>
+
+        <button class="add-btn" onclick="openAddModal()">
+            + Add Session
+        </button>
+    </header>
+
+
+    <!-- SUMMARY -->
+
+    <section class="summary-row">
+
+        <div class="card">
+            <div class="value" id="totalSessions">0</div>
+            <div class="label">Total Sessions</div>
+        </div>
+
+        <div class="card">
+            <div class="value" id="totalMinutes">0</div>
+            <div class="label">Total Minutes</div>
+        </div>
+
+        <div class="card">
+            <div class="value completed-text" id="completedSessions">0</div>
+            <div class="label">Completed</div>
+        </div>
+
+        <div class="card">
+            <div class="value todo-text" id="todoSessions">0</div>
+            <div class="label">To Do</div>
+        </div>
+
+    </section>
+
+
+    <!-- FILTERS -->
+
+    <section class="filters">
+
+        <select id="subjectFilter" onchange="applyFilters()">
+            <option value="">All Subjects</option>
+        </select>
+
+        <select id="statusFilter" onchange="applyFilters()">
+            <option value="">All Statuses</option>
+            <option value="TODO">TODO</option>
+            <option value="IN_PROGRESS">IN_PROGRESS</option>
+            <option value="COMPLETED">COMPLETED</option>
+        </select>
+
+        <button onclick="clearFilters()">Clear</button>
+
+    </section>
+
+
+    <!-- INSIGHTS -->
+
+    <section class="chart-row">
+
+        <div class="chart-box">
+
+            <h2>Duration per Session</h2>
+
+            <div id="bars"></div>
+
+        </div>
+
+
+        <div class="chart-box longest-box">
+
+            <h2>Longest Session</h2>
+
+            <div id="longestSession">
+                Loading...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TABLE -->
+
+    <section class="table-box">
+
+        <div class="table-header">
+            <h2>Session Details</h2>
+            <span id="sessionCount"></span>
+        </div>
+
+        <table>
+
+            <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Subject</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+
+            </thead>
+
+            <tbody id="sessionTable">
+
+            </tbody>
+
+        </table>
+
+    </section>
+
 </div>
 
+
+<!-- ADD / EDIT MODAL -->
+
+<div class="modal" id="sessionModal">
+
+    <div class="modal-content">
+
+        <h2 id="modalTitle">Add Study Session</h2>
+
+        <input type="hidden" id="sessionId">
+
+        <label>Subject</label>
+        <input
+                type="text"
+                id="subject"
+                placeholder="e.g. Java"
+        >
+
+        <label>Duration</label>
+        <input
+                type="number"
+                id="duration"
+                placeholder="Minutes"
+        >
+
+        <label>Status</label>
+
+        <select id="status">
+
+            <option value="TODO">TODO</option>
+            <option value="IN_PROGRESS">IN_PROGRESS</option>
+            <option value="COMPLETED">COMPLETED</option>
+
+        </select>
+
+
+        <div class="modal-buttons">
+
+            <button onclick="closeModal()">
+                Cancel
+            </button>
+
+            <button class="save-btn" onclick="saveSession()">
+                Save
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <script src="script.js"></script>
+
 </body>
 </html>
