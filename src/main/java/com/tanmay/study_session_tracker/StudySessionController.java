@@ -3,11 +3,13 @@ package com.tanmay.study_session_tracker;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:63342")
+
 public class StudySessionController {
         StudySessionManager manager=new StudySessionManager();
 
